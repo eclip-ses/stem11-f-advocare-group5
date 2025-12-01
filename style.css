@@ -83,7 +83,7 @@ nav {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     letter-spacing: 0.05em;
-    color: #ffffff;
+    color: #bf3245;
     position: relative;
     z-index: 1;
     text-shadow: 0 0 60px rgba(212, 175, 55, 0.8);
@@ -785,3 +785,4 @@ transition: width 0.3s;
 width: 100%;
 
 }
+
