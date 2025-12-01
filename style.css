@@ -1,0 +1,786 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: justify;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8f0 50%, #e0e0eb 100%);
+    background-attachment: fixed;
+    line-height: 1.6;
+    color: #333;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(90deg, #000000 0%, #1a1a1a 100%);
+    box-shadow: 0 2px 20px rgba(212, 175, 55, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid #d4af37;
+}
+
+.nav-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #d4af37;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #d4af37;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+    transform: translateY(-2px);
+}
+
+.hero {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8f0 50%, #d4af37 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+    color: #333;
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212,175,55,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: float 20s linear infinite;
+    z-index: 0;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+    animation: glow 2s ease-in-out infinite;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 1rem auto 2rem;
+    color: #000000;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
+    50% { text-shadow: 0 0 40px rgba(212, 175, 55, 1); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 3rem;
+    animation: slideUp 0.6s ease-out;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    border-bottom: 3px solid #d4af37;
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.card {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 255, 255, 0.5));
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3), inset 0 1px 0 rgba(212, 175, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.6);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(255, 255, 255, 0.7));
+}
+
+.card:hover::before {
+    opacity: 1;
+    animation: pulse-glow 0.6s ease-out;
+}
+
+@keyframes pulse-glow {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.card-image {
+    flex: 0 0 300px;
+    height: 250px;
+    background: linear-gradient(135deg, #d4af37, #c99a27);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 4rem;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.card-content {
+    flex: 1;
+    color: #555;
+}
+
+.card-content h3 {
+    font-size: 1.8rem;
+    color: #d4af37;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+}
+
+.card:hover .card-content h3 {
+    color: #333;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.card-content p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.subsection {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 255, 255, 0.6));
+    border-left: 4px solid #d4af37;
+    border-radius: 12px;
+    animation: fadeIn 0.8s ease-in;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.subsection h4 {
+    color: #d4af37;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.subsection p {
+    color: #666;
+    line-height: 1.8;
+}
+
+.team-member {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(255, 255, 255, 0.4));
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.1);
+    transition: all 0.3s;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.team-member:hover {
+    transform: translateY(-5px) translateX(5px);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+    border-color: rgba(212, 175, 55, 0.5);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(255, 255, 255, 0.6));
+}
+
+.team-member h4 {
+    color: #d4af37;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.team-member p {
+    color: #666;
+    margin-bottom: 0.8rem;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #d4af37 0%, #c99a27 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+    color: #000;
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 3rem;
+    animation: slideUp 0.6s ease-out, gradientShift 6s ease infinite;
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    100% { left: 100%; }
+}
+
+.cta-section h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #000;
+    color: #d4af37;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 2px solid #d4af37;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #d4af37;
+    transition: left 0.3s;
+    z-index: -1;
+}
+
+.cta-button:hover::before {
+    left: 0;
+}
+
+.cta-button:hover {
+    color: #000;
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.references {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(255, 255, 255, 0.5));
+    padding: 2rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.references h4 {
+    color: #d4af37;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.reference-item {
+    color: #666;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid #d4af37;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.reference-item:hover {
+    border-left-color: #333;
+    color: #d4af37;
+    padding-left: 1.5rem;
+}
+
+.reference-item a {
+    color: #d4af37;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.reference-item a:hover {
+    color: #333;
+    text-decoration: underline;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+footer {
+    background: linear-gradient(90deg, #f5f5f5 0%, #e8e8f0 100%);
+    color: #d4af37;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-top: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.stat-box {
+    background: linear-gradient(135deg, #d4af37 0%, #c99a27 100%);
+    background-size: 200% 200%;
+    color: #000;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    animation: slideUp 0.6s ease-out, gradientShift 6s ease infinite;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.stat-box:hover {
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
+}
+
+.stat-box:hover::before {
+    opacity: 1;
+}
+
+.stat-box h3 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.stat-box p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column !important;
+    }
+
+    .card-image {
+        flex: 0 0 200px;
+        width: 100%;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* Additional graphics and animations */
+.card-image::before {
+content: '';
+position: absolute;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent);
+border-radius: 10px;
+}
+
+.card-image {
+position: relative;
+}
+
+/* Pulse animation for stat boxes */
+@keyframes pulse {
+0%, 100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+}
+50% {
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+}
+}
+
+.stat-box {
+animation: pulse 2s infinite, slideUp 0.6s ease-out;
+}
+
+/* Rotating decoration elements */
+@keyframes rotate {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+section::before {
+content: '';
+position: absolute;
+width: 100px;
+height: 100px;
+background: radial-gradient(circle, rgba(76, 175, 80, 0.1), transparent);
+border-radius: 50%;
+animation: float 4s ease-in-out infinite;
+pointer-events: none;
+}
+
+section {
+position: relative;
+overflow: hidden;
+}
+
+/* Gradient text effect */
+section h2 {
+background: linear-gradient(135deg, #98c693, #2b583d);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+/* Card border glow effect */
+.card {
+position: relative;
+border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.card::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.1), transparent);
+transition: left 0.5s;
+}
+
+.card:hover::before {
+left: 100%;
+}
+
+/* Icon scale on hover */
+.card-image {
+font-size: 4rem;
+transition: transform 0.3s, font-size 0.3s;
+}
+
+.card:hover .card-image {
+transform: scale(1.15) rotate(-5deg);
+font-size: 5rem;
+}
+
+.card:nth-child(even):hover .card-image {
+transform: scale(1.15) rotate(5deg);
+}
+
+/* Animated underline for headings */
+.card-content h3::after {
+content: '';
+display: block;
+width: 0;
+height: 3px;
+background: #4CAF50;
+margin-top: 0.5rem;
+transition: width 0.3s;
+}
+
+.card:hover .card-content h3::after {
+width: 100%;
+}
+
+/* Team member card animations */
+.team-member {
+position: relative;
+overflow: hidden;
+}
+
+.team-member::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 3px;
+background: #4CAF50;
+animation: slideRight 0.6s ease-out;
+}
+
+@keyframes slideRight {
+from { left: -100%; }
+to { left: 100%; }
+}
+
+/* CTA button ripple effect */
+.cta-button {
+position: relative;
+overflow: hidden;
+}
+
+.cta-button::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+border-radius: 50%;
+background: rgba(76, 175, 80, 0.3);
+transform: translate(-50%, -50%);
+transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:active::after {
+width: 300px;
+height: 300px;
+}
+
+/* Reference item left border animation */
+.reference-item {
+border-left: 3px solid transparent;
+background: linear-gradient(90deg, rgba(76, 175, 80, 0.05), transparent);
+transition: all 0.3s;
+animation: slideInLeft 0.6s ease-out backwards;
+}
+
+.reference-item:nth-child(1) { animation-delay: 0.1s; }
+.reference-item:nth-child(2) { animation-delay: 0.2s; }
+.reference-item:nth-child(3) { animation-delay: 0.3s; }
+.reference-item:nth-child(4) { animation-delay: 0.4s; }
+.reference-item:nth-child(5) { animation-delay: 0.5s; }
+.reference-item:nth-child(6) { animation-delay: 0.6s; }
+.reference-item:nth-child(7) { animation-delay: 0.7s; }
+.reference-item:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes slideInLeft {
+from {
+    opacity: 0;
+    transform: translateX(-30px);
+    border-left-color: transparent;
+}
+to {
+    opacity: 1;
+    transform: translateX(0);
+    border-left-color: #4CAF50;
+}
+}
+
+.reference-item:hover {
+background: linear-gradient(90deg, rgba(76, 175, 80, 0.15), transparent);
+transform: translateX(10px);
+}
+
+/* List item animation */
+ul li {
+animation: slideUp 0.6s ease-out backwards;
+}
+
+ul li:nth-child(1) { animation-delay: 0.1s; }
+ul li:nth-child(2) { animation-delay: 0.2s; }
+ul li:nth-child(3) { animation-delay: 0.3s; }
+ul li:nth-child(4) { animation-delay: 0.4s; }
+
+/* Subsection slide in */
+.subsection {
+animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+from {
+    opacity: 0;
+    transform: translateY(20px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* Hero button hover glow */
+.hero {
+position: relative;
+}
+
+/* Stat box number animation */
+.stat-box h3 {
+animation: scaleIn 0.6s ease-out;
+}
+
+@keyframes scaleIn {
+from {
+    opacity: 0;
+    transform: scale(0.5);
+}
+to {
+    opacity: 1;
+    transform: scale(1);
+}
+}
+
+/* Navigation link underline */
+.nav-links a {
+position: relative;
+}
+
+.nav-links a::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 0;
+height: 2px;
+background: #4CAF50;
+transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+width: 100%;
+}
